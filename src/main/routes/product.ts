@@ -20,7 +20,7 @@ export default (router: Router): void => {
 
   router.get('/product/:id', async (req: Request, res: Response) => {
     const controller = readProductController()
-    const httpResponse = await controller.handle({ id: req.params.id })
+    const httpResponse = await controller.handle(req.params.id)
     res.status(httpResponse.statusCode).json(httpResponse.data)
   })
 
