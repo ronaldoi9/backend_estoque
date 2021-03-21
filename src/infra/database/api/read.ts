@@ -3,8 +3,8 @@ import { ReadApi } from '@/infra/repositories/contracts'
 export class ReadApiImpl implements ReadApi {
   constructor(private readonly sequelizeModel: any) { }
 
-  async get(body: any): Promise<any> | undefined {
-    return this.sequelizeModel.findOne({ where: { id: body.id } })
+  async get(id: number): Promise<any> | undefined {
+    return this.sequelizeModel.findOne({ where: { id: id } })
   }
 
   async getMany(): Promise<any> {

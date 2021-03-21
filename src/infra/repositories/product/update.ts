@@ -11,7 +11,7 @@ export class UpdateProductRepositoryImpl implements UpdateProductRepository {
     return await this.updateApi.update(object)
   }
 
-  async get(object: any): Promise<any> {
-    return await this.readApi.get(object.id)
+  async get(id: number): Promise<any> {
+    return await this.readApi.get(id)
   }
 }
