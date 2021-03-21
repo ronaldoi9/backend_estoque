@@ -1,5 +1,6 @@
 import { UpdateProductRepository } from '@/data'
 import { ReadApi, UpdateApi } from '@/infra/repositories/contracts'
+import { schema } from './schema'
 
 export class UpdateProductRepositoryImpl implements UpdateProductRepository {
   constructor(
@@ -8,7 +9,13 @@ export class UpdateProductRepositoryImpl implements UpdateProductRepository {
   ) { }
 
   async update(object: any): Promise<any> {
-    return await this.updateApi.update(object)
+    const isValidObject = await schema.validate(object)
+    
+    if (isValidObject.error){
+      throw new Error(isValidObject.error.message)
+    }else {
+      return await this.updateApi.update(object)
+    }
   }
 
   async get(id: number): Promise<any> {
