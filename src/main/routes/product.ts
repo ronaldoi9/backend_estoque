@@ -18,6 +18,12 @@ export default (router: Router): void => {
     res.status(httpResponse.statusCode).json(httpResponse.data)
   })
 
+  router.get('/product/:id', async (req: Request, res: Response) => {
+    const controller = readProductController()
+    const httpResponse = await controller.handle({ id: req.params.id })
+    res.status(httpResponse.statusCode).json(httpResponse.data)
+  })
+
   router.put('/product/:id', async (req: Request, res: Response) => {
     const controller = updateProductController()
     const httpResponse = await controller.handle({
