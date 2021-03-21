@@ -4,7 +4,7 @@ const { INTEGER, STRING, DOUBLE, DATE } = require('sequelize')
 
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    const table = await queryInterface.createTable('products', {
+    return await queryInterface.createTable('products', {
       id: {
         type: INTEGER,
         primaryKey: true,
@@ -16,7 +16,7 @@ module.exports = {
         allowNull: false
       },
       quantity: {
-        type: DOUBLE,
+        type: INTEGER,
         allowNull: false
       },
       price: {
@@ -32,8 +32,6 @@ module.exports = {
         allowNull: false
       }
     })
-
-    return table
   },
   down: async (queryInterface, Sequelize) => {
     await queryInterface.dropTable('products')
