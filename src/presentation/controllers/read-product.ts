@@ -5,11 +5,11 @@ import { ProductViewModel } from '@/presentation/view-models/product'
 export class ReadProductController implements Controller {
     constructor(private readonly readProduct: ReadProductUseCase) {}
 
-    async handle(body: any): Promise<HttpResponse<ProductViewModel[]>> {
+    async handle(id: number): Promise<HttpResponse<ProductViewModel[]>> {
         try{
             let data
-            if(body)
-                data = await this.readProduct.getOne(body)
+            if(id)
+                data = await this.readProduct.getOne(id)
             else
                 data = await this.readProduct.getMany()
             return ok(data)
