@@ -5,9 +5,9 @@ import { ProductViewModel } from '@/presentation/view-models/product'
 export class DeleteProductController implements Controller {
     constructor(private readonly deleteProduct: DeleteProductUseCase) {}
 
-    async handle(body: any): Promise<HttpResponse<ProductViewModel[]>> {
+    async handle(id: number): Promise<HttpResponse<ProductViewModel[]>> {
         try{
-            const data = await this.deleteProduct.delete(body)
+            const data = await this.deleteProduct.delete(id)
             return ok(data)
         }catch(error) {
             return serverError(error)

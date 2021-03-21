@@ -35,7 +35,7 @@ export default (router: Router): void => {
 
   router.delete('/product/:id', async (req: Request, res: Response) => {
     const controller = deleteProductController()
-    const httpResponse = await controller.handle({ id: req.params.id })
+    const httpResponse = await controller.handle(req.params.id)
     res.status(httpResponse.statusCode).json(httpResponse.data)
   })
 }
