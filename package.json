@@ -7,7 +7,7 @@
     "start": "node dist/main/server.js",
     "build": "rimraf dist && tsc",
     "migrates": "yarn sequelize db:migrate",
-    "dev": "yarn build && yarn yarn start"
+    "dev": "yarn build && yarn start"
   },
   "license": "MIT",
   "devDependencies": {
