@@ -5,7 +5,9 @@
     "lint": "eslint ./src --ext .ts",
     "lint:fix": "eslint ./src --ext .ts --fix",
     "start": "node dist/main/server.js",
-    "build": "rimraf dist && tsc"
+    "build": "rimraf dist && tsc",
+    "migrates": "yarn sequelize db:migrate",
+    "dev": "yarn build && yarn yarn start"
   },
   "license": "MIT",
   "devDependencies": {
