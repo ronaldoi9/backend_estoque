@@ -9,8 +9,13 @@ export class UpdateProductRepositoryImpl implements UpdateProductRepository {
   ) { }
 
   async update(object: any): Promise<any> {
-    const isValidObject = await schema.validate(object)
-    
+    const objectToValidate = {
+      name: object.name,
+      quantity: object.quantity,
+      price: object.price
+    }
+    const isValidObject = await schema.validate(objectToValidate)
+
     if (isValidObject.error){
       throw new Error(isValidObject.error.message)
     }else {
